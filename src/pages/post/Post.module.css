@@ -1,0 +1,20 @@
+.postContainer{
+    width: 60%;
+    margin: auto;
+}
+.postText{
+    margin-top: 10px;
+}
+.postDate{
+    font-size: 12px;
+    color:  #777;
+margin-left: 12px;
+}
+.postImg{
+    width: 40px;
+    height: 40px;
+}
+.postBlockInfo{
+    display: flex;
+    align-items: center;
+}
