@@ -25,4 +25,9 @@ class Second extends React.Component{
         )
     }
 }
+Second.defaultProps={
+    createName:"Автор неизвестен",
+    createDate:"Дата неизвестна",
+    title:"..."
+}
 export default Second;

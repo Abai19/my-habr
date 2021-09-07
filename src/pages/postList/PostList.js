@@ -4,18 +4,43 @@ import Second from "../../components/second/Second";
 import Footer from "../../components/footer/Footer";
 
 class PostList extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            postList: []
+        }
+    }
+    componentDidMount(error, errorInfo) {
+            fetch("http://localhost:3001/posts")
+                .then(response=> {
+                    if(response.ok){
+                        return response.json();
+                    }else{
+                        alert("Error"+ response.status)
+                    }
+                })
+                .then(data=>this.setState({
+                    postList:data
+                }))
+    }
+
     render(){
         return (
             <>
                 <Header/>
-                <Second
-                    createName="Testov Test"
-                    createDate="12.02.2021 15:45"
-                    createTitle="NASA переходит в облака: MCP, DAPHNE и облачные инструменты для команды
-                            Perseverance"
-                />
-                <Second createName="Testov Testa" createDate="12.02.2021 15:45"/>
-                <Footer/>
+                {
+                    [<Second/>,<Second/>,<Second/>]
+                }
+                {
+                    this.state.postList.map(data=>(
+                        <Second
+                            createName={data.createdUser}
+                            createDate={data.createdDate}
+                            title={data.title}
+                        />
+                    ))
+                }
+                <Footer />
             </>
         )
     }
